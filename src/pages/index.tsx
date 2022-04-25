@@ -1,179 +1,157 @@
 import * as React from "react"
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
+import { StaticImage } from "gatsby-plugin-image"
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
+import SEOComponent from "../components/seo-component"
 
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLink = {
-  text: "TypeScript Documentation",
-  url: "https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/",
-  color: "#8954A8",
-}
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative" as "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-// data
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
-
-// markup
-const IndexPage = () => {
+const ImageComponent = ({img, caption, subcaption, color}: { img: any, caption: string, subcaption: string, color: string}) => {
+  const subCap = subcaption ? (
+    <div className={`text-xl text-center p-5 ${color}`}>{subcaption}</div>
+  ) : (<div></div>);
   return (
-    <main style={pageStyles}>
-      <title>Home Page</title>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! </span>
-        🎉🎉🎉
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
+    <div className="max-w-[720px] flex flex-col items-center">
+      {img}
+      <div className="absolute max-w-[720px]">
+        <div className={`text-5xl text-center text-wrap ${color}`}>{caption}</div>
+        { subCap }
+      </div>
+
+
+
+
+    </div>
   )
 }
+
+const IndexPage = () => {
+  const images = [
+    {
+      img: <StaticImage
+        alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
+        src="../images/ZoomBackground.jpg"
+        className=""
+      />,
+      caption: "Your New Zoom Background",
+      subcaption: "",
+      color: "text-white",
+    },
+    {
+      img: <StaticImage
+        alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
+        src="../images/LunchBreak.jpg"
+        className=""
+      />,
+      caption: "Lunch Break",
+      subcaption: "",
+      color: "text-white",
+    },
+    {
+      img: <StaticImage
+        alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
+        src="../images/VinePulling.jpeg"
+        className=""
+      />,
+      caption: "Addressing PR Nitpicks",
+      subcaption: "(Pulling Vines = Best Stress Reliever)",
+      color: "text-black",
+    },
+    {
+      img: <StaticImage
+        alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
+        src="../images/OfficeHappyHourPool.jpeg"
+        className=""
+      />,
+      caption: "Office Happy Hour At The Pool",
+      subcaption: "",
+      color: "text-white",
+    },
+    {
+      img: <StaticImage
+        alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
+        src="../images/SunsetDinner.jpeg"
+        className=""
+      />,
+      caption: "Diner After Work",
+      subcaption: "",
+      color: "text-white mt-20",
+    },
+    {
+      img: <StaticImage
+        alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
+        src="../images/WinFreeSwag.jpg"
+        className=""
+      />,
+      caption: "Win Free Swag",
+      subcaption: "",
+      color: "text-white",
+    },
+    {
+      img: <StaticImage
+        alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
+        src="../images/Tesla.jpeg"
+        className=""
+      />,
+      caption: "Buy The Tesla You've Always Wanted",
+      subcaption: "(And Have Somewhere To Park It)",
+      color: "text-gray-100",
+    },
+
+    /*{
+      img: <StaticImage
+        alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
+        src="../images/LetTheDogOut.jpg"
+        className=""
+      />,
+      caption: "Let The Dog Out",
+      subcaption: "",
+    }*/
+  ]
+  return (
+    <div className="font-['Tapestry']">
+      <SEOComponent />
+      <main>
+        <div className="flex flex-col items-center p-5">
+          <h1 className="font-['Whisper'] text-9xl">Subhattan</h1>
+          <h2 className=" text-xl">NYC &#8594; Suburbs</h2>
+        </div>
+
+        <div className=" flex flex-col items-center">
+          {
+            images.map((imData, idx) => {
+              const bg = idx % 2 == 0 ? "bg-white" : "bg-white"
+              return (
+                <div className={`relative ${bg} w-full flex flex-col items-center`}>
+                  <ImageComponent img={imData.img} caption={imData.caption} subcaption={imData.subcaption} color={imData.color}/>
+                </div>
+
+              );
+            })
+          }
+        </div>
+        <div className="text-center font-sans my-5">
+          <div className="text-5xl">Convinced Yet?</div>
+          <div className="">Take the non-stop/1-stop train to Stamford/Greenwich/Darien/Fairfield</div>
+          <div className="">We'll Come Pick You Up and Show You Around</div>
+        </div>
+        <div className="flex flex-col items-center font-sans my-5">
+          <div className="flex flex-row items-center">
+            <StaticImage alt="" src="../images/ChantalSeng.jpeg" className=""/>
+            <div className="flex flex-col items-start">
+              <div className="">Chantal Seng</div>
+              <div className="">Contact: <a className="text-sky-600 underline" href="tel:2038247038">203-824-7038</a></div>
+              <div className="">Email: <a className="text-sky-600 underline" href="mailto:chantals@afahomes.com">chantals@afahomes.com</a></div>
+            </div>
+          </div>
+          </div>
+        <div className="text-center font-sans my-5">
+          <div className="text-5xl">But Houses Are Expensive!</div>
+          <div className="">You're a Software Engineer - You Can Afford It</div>
+          <div className="">(Or You're Underpaid)</div>
+        </div>
+      </main>
+    </div>
+  )
+}
+
 
 export default IndexPage

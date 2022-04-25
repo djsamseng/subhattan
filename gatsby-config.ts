@@ -2,10 +2,15 @@ import type { GatsbyConfig } from "gatsby"
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `subhattan`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Subhattan`,
+    siteUrl: `https://www.subhattan.com`,
   },
-  plugins: [],
+  plugins: [
+    'gatsby-plugin-postcss',
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+  ],
 }
 
 export default config
