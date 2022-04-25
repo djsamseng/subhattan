@@ -14,7 +14,7 @@ function SEO({ description, lang, meta, title, titleTemplate }: {
   const site = {
     siteMetadata: {
       title: "Subhattan",
-      description: "",
+      description: "You should move from NYC to the suburbs. Life awaits you. You can afford to spoil yourself now.",
     }
   }
 
