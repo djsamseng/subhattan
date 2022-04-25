@@ -6,13 +6,13 @@ import SEOComponent from "../components/seo-component"
 
 const ImageComponent = ({img, caption, subcaption, color}: { img: any, caption: string, subcaption: string, color: string}) => {
   const subCap = subcaption ? (
-    <div className={`text-xl text-center p-5 ${color}`}>{subcaption}</div>
+    <div className={`text-lg sm:text-xl text-center p-5 ${color}`}>{subcaption}</div>
   ) : (<div></div>);
   return (
     <div className="max-w-[720px] flex flex-col items-center">
       {img}
       <div className="absolute max-w-[720px]">
-        <div className={`text-5xl text-center text-wrap ${color}`}>{caption}</div>
+        <div className={`text-3xl sm:text-5xl text-center text-wrap ${color}`}>{caption}</div>
         { subCap }
       </div>
 
@@ -111,7 +111,7 @@ const IndexPage = () => {
       <SEOComponent />
       <main>
         <div className="flex flex-col items-center p-5">
-          <h1 className="font-['Whisper'] text-9xl">Subhattan</h1>
+          <h1 className="font-['Whisper'] text-7xl sm:text-9xl">Subhattan</h1>
           <h2 className=" text-xl">NYC &#8594; Suburbs</h2>
         </div>
 
